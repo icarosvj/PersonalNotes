@@ -1,0 +1,270 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    user-select: none;
+
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    outline: none;
+    background-color: #00000000;
+    color: var(--blue);
+    transition: 1s;
+}
+
+@font-face {
+    font-family: sf-regular;
+    src: url(Fonts/sf-regular.otf);
+}
+
+@font-face {
+    font-family: sf-semi;
+    src: url(Fonts/sf-semi.otf);
+}
+
+@font-face {
+    font-family: sf-bold;
+    src: url(Fonts/sf-bold.otf);
+}
+
+
+:root {
+    --blue: #05162A;
+    --secblue: #67A5B0;
+    --green: #C2DF6B;
+    --white: #e7ebf6;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url(/images/Background.png);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#navbar {
+    width: 100vw;
+    height: 11vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0px 3.125rem 0px 3.125rem;
+    color: var(--blue);
+    background-color: var(--white);
+}
+
+.navDivLeft {
+    display: flex;
+    align-items: center;
+}
+
+#navbar p {
+    padding: 30px;
+    font-size: 1.8rem;
+    font-family: sf-regular;
+}
+
+#navLogo img {
+    width: 25px;
+    transition: 1s;
+}
+
+#navLogo:hover {
+    transition: 1s;
+    transform: rotate(360deg);
+}
+
+#navList {
+    display: flex;
+    gap: 15px;
+
+    font-family: sf-bold;
+    font-size: 1.5rem;
+}
+
+#navList a {
+    color: var(--blue);
+    cursor: pointer;
+
+    text-decoration: underline rgba(0, 0, 0, 0);
+    transition: text-decoration-color 300ms;
+    text-underline-offset: 0.7rem;
+}
+
+#navList a:hover {
+    text-decoration: var(--blue) underline;
+    text-underline-offset: 0.7rem;
+}
+
+#navAboutBtn img {
+    border-radius: 50%;
+    padding: 5px;
+    font-family: sf-bold;
+    background-color: var(--blue);
+    color: var(--white);
+    cursor: pointer;
+
+    transition: 1s;
+
+}
+
+#navAboutBtn:hover img {
+    transition: 1s;
+    transform: rotate(360deg);
+}
+
+/*Main Page home*/
+
+#mainHome {
+    display: flex;
+    padding: 3.125rem;
+}
+
+#mainHomePreview {
+    width: 25vw;
+}
+
+.mainTitle {
+    font-family: sf-bold;
+    font-size: 4.5rem;
+    color: var(--blue);
+
+    width: 70vw;
+
+}
+
+.mainTitleUnder {
+    text-decoration: #5d829a underline;
+    text-underline-offset: 0.3rem;
+}
+
+#mainStartBtn {
+    padding: 15px;
+    border-radius: 15px;
+    font-family: sf-bold;
+    font-size: 2.5rem;
+    background-color: var(--blue);
+    color: var(--white);
+    margin-top: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Tasks */
+
+#taskHome {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(#e7ebf6, #e7ebf660);
+
+    font-family: sf-regular;
+}
+
+#taskHomeMain {
+    min-height: 89vh;
+    padding: 3.125rem;
+    display: flex;
+}
+
+#taskAside {
+    background-color: #8859d3;
+    width: 17vw;
+}
+#taskArea {
+    width: 40vw;
+    background-color: #59d373;
+}
+
+.taskTop {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    background-color: #8b3380;
+}
+
+#taskInput {
+    background-color: var(--white);
+    width: 25vw;
+    height: 8vh;
+    padding: 10px;
+    padding-left: 20px;
+
+    border-radius: 30px;
+    font-size: 1.3rem;
+}
+
+#taskInput:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+
+#taskAddBtn {
+    position: absolute;
+    font-size: 1.3rem;
+    font-family: sf-bold;
+    width: 80px;
+    height: 8vh;
+    padding: 10px;
+    left: 65.5vw;
+
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 30px;
+    cursor: pointer;
+
+}
+
+#taskAddBtn:hover {
+    color:var(--blue);
+    background-color: var(--white);
+}
+
+#listUL {
+    background-color: var(--green);
+    padding: 30px;
+    width: 100%;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-family: sf-bold;
+
+    background-color: violet;
+}
+
+.task p {
+    width: 100%;
+}
+
+.taskNoteBtn img, .deleteBtn img{
+    filter: invert(6%) sepia(35%) saturate(3415%) hue-rotate(195deg) brightness(91%) contrast(98%);
+}
+
+.taskNoteBtn img:hover, .deleteBtn img:hover{
+    filter: invert(89%) sepia(21%) saturate(101%) hue-rotate(188deg) brightness(103%) contrast(93%);
+}
+
+.taskNoteBtn, .deleteBtn {
+    padding: 3px;
+    border-radius: 5px;
+    margin-left: 3px;
+}
+
+.taskNoteBtn:hover, .deleteBtn:hover{
+    background-color: var(--blue);
+}

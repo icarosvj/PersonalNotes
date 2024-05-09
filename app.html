@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="app.css">
+
+    <title>Personal Notes</title>
+</head>
+
+<body>
+
+    <nav id="navbar">
+        <div class="navDivLeft">
+            <div id="navLogo"><img src="/images/logo.png" alt="LogoSite"></div>
+        </div>
+        <ul id="navList">
+            <li><a id="navDisplayHome" href="#">Home</a></li>
+            <li><a id="navDisplayNotes" href="#">Notes</a></li>
+            <li><a id="navDisplayTasks" href="#">Tasks</a></li>
+        </ul>
+        <button id="navAboutBtn">
+                <img src="/images/navaboutbtn.svg" alt="AboutIcon">
+        </button>
+
+    </nav>
+
+
+    <main id="mainHome">
+        <div class="mainTitle">
+            <p class="mainTitleP">
+                Personal Notes is the best way to
+            </p>
+            <p class="mainTitleUnder">
+                organize your life
+            </p>
+            <button id="mainStartBtn">
+                Start Now +
+            </button>
+        </div>
+
+        <div id="mainHomePreview">
+
+        </div>
+
+    </main>
+
+    <section id="notesHome">
+        Notes
+    </section>
+
+    <section id="taskHome">
+        <div id="taskHomeMain">
+            <aside id="taskAside">
+                Teste
+            </aside>
+            <div id="taskArea">
+                <div class="taskTop">
+                    <input type="text" name="New Task" id="taskInput" placeholder="Add Your Task">
+                    <button id="taskAddBtn">ADD</button>
+                </div>
+
+                <div id="listUL">
+                    <div class="task">
+                        <p class="taskItem">Fazer Compras</p>
+        
+                        <button class="taskNoteBtn" value="">
+                            <img src="images/iconNotes.svg">
+                        </button>
+            
+                        <button class="deleteBtn" value="">
+                            <img src="images/deleteIcon.svg">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>

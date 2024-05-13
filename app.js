@@ -39,8 +39,7 @@ let taskInput = document.getElementById('taskInput')
 let taskAddBtn = document.getElementById('taskAddBtn')
 let listUL = document.getElementById('listUL')
 
-taskList = []
-
+let taskList = []
 //
 
 function reloadTaskList() {
@@ -49,11 +48,11 @@ function reloadTaskList() {
         <div class="task">
             <p class="taskItem">${task}</p>
 
-            <button class="taskNoteBtn">
+            <button class="taskNoteBtn" value="${taskList.indexOf(task)}" onclick"editTask(this.value)">
                 <img src="images/iconNotes.svg">
             </button>
 
-            <button class="deleteBtn" value="${taskList.indexOf(task)}">
+            <button class="deleteBtn" value="${taskList.indexOf(task)}" onclick="deleteTask(this.value)">
                 <img src="images/deleteIcon.svg">
             </button>
         </div>
@@ -72,7 +71,7 @@ function addTaskOnList() {
         taskList.push(taskInput.value)
         taskInput.value = ''
         taskInput.focus()
-        console.log(taskList)
+        localStorage.setItem("taskList", JSON.stringify(taskList));
         //Adicionar no HTML
         reloadTaskList()
     }
@@ -81,4 +80,16 @@ function addTaskOnList() {
 
 taskAddBtn.addEventListener('click', () => {
     addTaskOnList()
+    console.log(taskList)
 })
+
+
+function deleteTask(value) {
+    delete taskList[value]
+    reloadTaskList()
+}
+
+
+function editTask(index) {
+
+}

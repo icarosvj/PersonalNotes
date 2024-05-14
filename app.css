@@ -11,7 +11,7 @@
     background-color: #00000000;
     color: var(--blue);
     transition: 1s;
-    
+
 }
 
 @font-face {
@@ -162,47 +162,53 @@ body {
 
 #taskHome {
     width: 100vw;
-    height: 89vh;
+    min-height: 89vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: sf-regular;
+    background-image: linear-gradient(to top, #eeecf363, var(--white));
 }
 
 #taskHomeMain {
     display: flex;
+    justify-content: center;
+    background-color: var(--white);
+
+    width: 40vw;
     border-radius: 30px;
     padding: 30px;
-    background-image: linear-gradient(to top, #eeecf363, #FAF9FD);
+
+    background-image: linear-gradient(#e7ebf6, #ffffff00);
     box-shadow: 0px 10px 30px #00000015;
     border: 3px solid #ffffff;
+
+    margin-bottom: 3rem;
 }
 
-#taskAside {
-    width: 17vw;
-}
+
 #taskArea {
-    width: 30vw;
+    width: 35vw;
 }
 
 .taskTop {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 15px;
-
 }
 
 #taskInput {
-    background-color: var(--white);
-    width: 25vw;
-    height: 8vh;
-    padding: 10px;
+    padding: 5px;
     padding-left: 20px;
-
+    height: 8vh;
+    font-size: 1.5rem;
     border-radius: 30px;
-    font-size: 1.3rem;
+    width: 30vw;
+    background-color: #FAF9FD;
+    box-shadow: 0px 0px 15px #0000000e;
+
+    color: var(--blue);
 }
 
 #taskInput:hover {
@@ -212,38 +218,44 @@ body {
 
 
 #taskAddBtn {
-    position: absolute;
-    font-size: 1.3rem;
-    font-family: sf-bold;
-    width: 80px;
-    height: 8vh;
-    padding: 10px;
-    left: 57vw;
-
     background-color: var(--blue);
     color: var(--white);
-    border-radius: 30px;
+    position: absolute;
     cursor: pointer;
+    padding: 5px 15px 5px 15px;
+    height: 8vh;
+    font-family: sf-bold;
+    font-size: 1.4rem;
+    border-radius: 30px;
 
+    left: 59.5vw;
 }
 
 #taskAddBtn:hover {
-    color:var(--blue);
+    color: var(--blue);
     background-color: var(--white);
 }
 
+hr {
+    border: 2px solid rgba(255, 255, 255, 0.11);
+    margin: 15px;
+}
+
 #listUL {
-    padding: 30px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px
+    gap: 15px;
+}
+
+#listUl .active {
+    padding: 15px;
 }
 
 .task {
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-family: sf-bold;
 }
 
@@ -251,21 +263,26 @@ body {
     width: 100%;
 }
 
-.taskNoteBtn img, .deleteBtn img{
+.taskNoteBtn img,
+.deleteBtn img {
     filter: invert(6%) sepia(35%) saturate(3415%) hue-rotate(195deg) brightness(91%) contrast(98%);
+    width: 40px;
 }
 
-.taskNoteBtn img:hover, .deleteBtn img:hover{
+.taskNoteBtn img:hover,
+.deleteBtn img:hover {
     filter: invert(89%) sepia(21%) saturate(101%) hue-rotate(188deg) brightness(103%) contrast(93%);
 }
 
-.taskNoteBtn, .deleteBtn {
+.taskNoteBtn,
+.deleteBtn {
     padding: 3px;
     border-radius: 5px;
     margin-left: 3px;
 }
 
-.taskNoteBtn:hover, .deleteBtn:hover{
+.taskNoteBtn:hover,
+.deleteBtn:hover {
     background-color: var(--blue);
 }
 
@@ -278,13 +295,13 @@ body {
     background-image: linear-gradient(to top, #e7ebf6, #e7ebf6);
     padding: 35px;
     text-align: left;
-    
+
     box-shadow: 0px 10px 30px #00000015;
     border: 3px solid #ffffff;
     border-radius: 30px;
 
     left: 50%;
-    top: 50%;
+    top: 51%;
     transform: translate(-50%, -50%);
     margin-top: 1rem;
     z-index: 1;
@@ -295,6 +312,7 @@ body {
     display: flex;
     align-items: center;
 }
+
 .taskEditTitle {
     padding: 15px 30px 15px 30px;
 
@@ -321,8 +339,9 @@ body {
 .taskEditCloseBtn {
     position: absolute;
     left: 38vw;
+    cursor: pointer;
 }
 
-::placeholder{
+::placeholder {
     color: #6e6e6e46;
 }

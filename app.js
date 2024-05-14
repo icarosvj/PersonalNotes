@@ -59,7 +59,7 @@ function reloadTaskList() {
 
             <div class="taskEdit" id="taskEdit${task.id}">
                 <div class="taskEditTop">
-                    <input class="taskEditTitle" value="${task.title}" spellcheck="false" id="taskTitle${taskList.indexOf(task)}" minlength="3" maxlength="25" required >
+                    <input class="taskEditTitle" value="${task.title}" spellcheck="false" id="taskTitle${taskList.indexOf(task)}" minlength="3" maxlength="18" required >
                     <button class="taskEditCloseBtn" value="${taskList.indexOf(task)}" onclick="closeTask(this.value)">
                         <img src="/images/close.svg" alt="" srcset="">
                     </button>
@@ -94,7 +94,7 @@ function addTaskOnList() {
     }
 }
 
-taskInput.addEventListener("keypress", function(event){
+taskInput.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         addTaskOnList()
     }
@@ -111,7 +111,7 @@ function deleteTask(value) {
 }
 
 
-function editTask(value) { 
+function editTask(value) {
     let editMenu = document.querySelector(`div#taskEdit${taskList[value].id}`)
     editMenu.style.display = "flex"
 }

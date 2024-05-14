@@ -59,7 +59,7 @@ function reloadTaskList() {
 
             <div class="taskEdit" id="taskEdit${task.id}">
                 <div class="taskEditTop">
-                    <input class="taskEditTitle" value="${task.title}" spellcheck="false" id="taskTitle${taskList.indexOf(task)}">
+                    <input class="taskEditTitle" value="${task.title}" spellcheck="false" id="taskTitle${taskList.indexOf(task)}" minlength="3" maxlength="25" required >
                     <button class="taskEditCloseBtn" value="${taskList.indexOf(task)}" onclick="closeTask(this.value)">
                         <img src="/images/close.svg" alt="" srcset="">
                     </button>
@@ -94,13 +94,17 @@ function addTaskOnList() {
     }
 }
 
+taskInput.addEventListener("keypress", function(event){
+    if (event.key === "Enter") {
+        addTaskOnList()
+    }
+})
 
 taskAddBtn.addEventListener('click', () => {
     addTaskOnList()
-    console.table(taskList)
 })
 
-
+taskInput.addEventListener('click')
 function deleteTask(value) {
     delete taskList[value]
     reloadTaskList()

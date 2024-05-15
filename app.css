@@ -164,6 +164,7 @@ body {
     width: 100vw;
     min-height: 89vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: sf-regular;
@@ -246,10 +247,13 @@ hr {
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+
 }
 
-#listUl .active {
-    padding: 15px;
+.ListULActive {
+    padding: 30px;
+
 }
 
 .task {
@@ -344,4 +348,14 @@ hr {
 
 ::placeholder {
     color: #6e6e6e46;
+}
+
+#taskDateToday {
+    font-family: sf-bold;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#popUpWindow {
+
 }

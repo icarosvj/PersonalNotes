@@ -38,10 +38,16 @@ navDisplayTasks.addEventListener("click", () => {
 let taskInput = document.getElementById('taskInput')
 let taskAddBtn = document.getElementById('taskAddBtn')
 let listUL = document.getElementById('listUL')
+let taskDateToday = document.getElementById('taskDateToday')
 
 let indexTaskObj = 0
 let taskList = []
+let listLength = taskList.length
 //
+document.addEventListener('DOMContentLoaded', () => {
+    setDayTask()
+    reloadTaskList()
+} )
 
 function reloadTaskList() {
     let taskListMap = taskList.map(function (task) {
@@ -67,13 +73,12 @@ function reloadTaskList() {
                 <textarea name="taskEditText" id="taskEditText${task.id}" class="taskEditText" cols="35" rows="10" spellcheck="false" placeholder="Insert your Text">${task.text}</textarea>
             </div>
         </div>
-
-
         `
-
     })
     taskListMap = taskListMap.join("")
     listUL.innerHTML = taskListMap
+    paddingList()
+
 }
 
 function addTaskOnList() {
@@ -85,10 +90,11 @@ function addTaskOnList() {
         taskList[indexTaskObj].text = ""
 
         indexTaskObj++
+        listLength++
 
         taskInput.value = ''
         taskInput.focus()
-        //localStorage.setItem("taskList", JSON.stringify(taskList));
+        localStorage.setItem("taskList", JSON.stringify(taskList));
         //Adicionar no HTML
         reloadTaskList()
     }
@@ -104,12 +110,11 @@ taskAddBtn.addEventListener('click', () => {
     addTaskOnList()
 })
 
-taskInput.addEventListener('click')
 function deleteTask(value) {
     delete taskList[value]
+    listLength--
     reloadTaskList()
 }
-
 
 function editTask(value) {
     let editMenu = document.querySelector(`div#taskEdit${taskList[value].id}`)
@@ -127,4 +132,23 @@ function closeTask(value) {
     let currentTaskText = document.getElementById(`taskEditText${value}`).value
     taskList[value].text = currentTaskText
     reloadTaskList()
+}
+
+function paddingList() {
+    console.log(listLength)
+    if (listLength != 0) {
+        listUL.classList.add('ListULActive')
+    } else {
+        listUL.classList.remove('ListULActive')
+    }
+}
+
+function setDayTask() {
+    let todayDate = new Date()
+    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    let currentMonth = month[todayDate.getMonth()]
+    let currentDay = todayDate.getDate()
+
+    console.log(todayDate)
+    taskDateToday.innerHTML = `Today, ${currentMonth} ${currentDay}.`
 }

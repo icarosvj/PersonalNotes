@@ -47,7 +47,7 @@ let listLength = taskList.length
 document.addEventListener('DOMContentLoaded', () => {
     setDayTask()
     reloadTaskList()
-} )
+})
 
 function reloadTaskList() {
     let taskListMap = taskList.map(function (task) {
@@ -83,7 +83,7 @@ function reloadTaskList() {
 
 function addTaskOnList() {
     if (taskInput.value === "") {
-        window.alert('insira')
+        popUpError()
     } else {
         taskList.push({ id: indexTaskObj, })
         taskList[indexTaskObj].title = taskInput.value
@@ -145,10 +145,26 @@ function paddingList() {
 
 function setDayTask() {
     let todayDate = new Date()
-    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let currentMonth = month[todayDate.getMonth()]
     let currentDay = todayDate.getDate()
 
     console.log(todayDate)
     taskDateToday.innerHTML = `Today, ${currentMonth} ${currentDay}.`
+}
+
+function popUpError() {
+    let popUpWindow = document.getElementById('popUpWindow')
+    popUpWindow.style.display = "flex"
+    setTimeout(() => {
+        popUpWindow.style.opacity = "100%"
+    }, "1");
+
+    setTimeout(() => {
+        popUpWindow.style.opacity = "0%"
+    }, "2000");
+
+    setTimeout(() => {
+        popUpWindow.style.display = "none"
+    }, "3000");
 }

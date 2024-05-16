@@ -10,8 +10,8 @@ let taskHome = document.getElementById('taskHome');
 
 document.addEventListener("DOMContentLoaded", () => {
     mainHome.style.display = "none";
-    notesHome.style.display = "none";
-    taskHome.style.display = "flex"
+    notesHome.style.display = "flex";
+    taskHome.style.display = "none"
 })
 
 navDisplayHome.addEventListener("click", () => {
@@ -22,7 +22,7 @@ navDisplayHome.addEventListener("click", () => {
 
 navDisplayNotes.addEventListener("click", () => {
     mainHome.style.display = "none";
-    notesHome.style.display = "block";
+    notesHome.style.display = "flex";
     taskHome.style.display = "none"
 })
 
@@ -135,7 +135,6 @@ function closeTask(value) {
 }
 
 function paddingList() {
-    console.log(listLength)
     if (listLength != 0) {
         listUL.classList.add('ListULActive')
     } else {
@@ -148,8 +147,6 @@ function setDayTask() {
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let currentMonth = month[todayDate.getMonth()]
     let currentDay = todayDate.getDate()
-
-    console.log(todayDate)
     taskDateToday.innerHTML = `Today, ${currentMonth} ${currentDay}.`
 }
 
@@ -168,3 +165,57 @@ function popUpError() {
         popUpWindow.style.display = "none"
     }, "3000");
 }
+
+//NotesSection 
+
+let notesInput = document.getElementById('notesInput')
+let notesAddBtn = document.getElementById('notesAddBtn')
+let notesListUL = document.getElementById('notesListUL')
+
+let notesList = []
+let indexNotesObj = 0
+
+function reloadNotesList() {
+    let notesReloadList = notesList.map(function(note) {
+        return `
+        <div class="note">
+        <p class="noteTitle">${note.title}</p>
+s
+            <p class="noteText">${note.text}</p>
+
+            <div class="notesEdit" id="notesEdit${note.id}">
+            <div class="notesEditTop">
+                <input class="notesEditTitle" spellcheck="false" minlength="3" maxlength="18" required id="notesEditTitle${note.id}" >
+                <button class="notesEditCloseBtn">
+                    <img src="/images/close.svg" alt="" srcset="">
+                </button>
+            </div>
+            <textarea id="notesEditText${note.id}" name="notesEditText" class="notesEditText" cols="35" rows="10" spellcheck="false" placeholder="Insert your Text">Teste</textarea>
+        </div>
+        </div>
+
+
+        `
+    })
+    notesReloadList = notesReloadList.join("")
+    notesListUL.innerHTML = notesReloadList
+}
+
+
+
+
+notesAddBtn.addEventListener('click', () => {
+    addNotesOnList()
+    reloadNotesList()
+})
+
+function addNotesOnList() {
+
+    notesList.push({ id: indexNotesObj, })
+    notesList[indexNotesObj].title = notesInput.value
+    notesList[indexNotesObj].text = ""
+
+    indexNotesObj++
+    console.table(notesList)
+}
+

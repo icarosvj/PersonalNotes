@@ -348,14 +348,14 @@ body {
     color: #6e6e6e46;
 }
 
-#taskDateToday {
+#taskDateToday, #notesHomeTitle {
     font-family: sf-bold;
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 1.3rem;
 }
 
-#popUpWindow {
+#popUpWindow, #popUpWindowNote {
     display: none;
     align-items: center;
     margin-bottom: 1.3rem;
@@ -372,7 +372,7 @@ body {
 
 }
 
-#popUpWindow p {
+#popUpWindow p, #popUpWindowNote p {
     margin: 0px 10px;
     color: #a71d1d;
 
@@ -383,22 +383,23 @@ body {
 #notesHome {
     width: 100vw;
     min-height: 89vh;
-    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: linear-gradient(to top, #eeecf346, var(--white));
 }
 
 
 
 #notesHomeMain {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     background-color: var(--white);
 
     border-radius: 30px;
     padding: 30px;
 
-    min-width: 65vw;
+    max-width: 61vw;
 
     background-image: linear-gradient(#e7ebf6, #ffffff00);
     box-shadow: 0px 10px 30px #00000015;
@@ -445,7 +446,7 @@ body {
 
 #notesListUL {
     width: 100%;
-    gap: 10px;
+    gap: 15px;
     display: flex;
     justify-content: start;
     flex-wrap: wrap;

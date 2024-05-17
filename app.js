@@ -180,7 +180,6 @@ function reloadNotesList() {
         return `
         <div class="note">
         <p class="noteTitle">${note.title}</p>
-s
             <p class="noteText">${note.text}</p>
 
             <div class="notesEdit" id="notesEdit${note.id}">
@@ -201,21 +200,46 @@ s
     notesListUL.innerHTML = notesReloadList
 }
 
-
-
-
 notesAddBtn.addEventListener('click', () => {
     addNotesOnList()
     reloadNotesList()
 })
 
 function addNotesOnList() {
+    if (notesInput.value === "") {
+        popUpErrorNotes()
+    } else {
 
     notesList.push({ id: indexNotesObj, })
     notesList[indexNotesObj].title = notesInput.value
-    notesList[indexNotesObj].text = ""
+    notesList[indexNotesObj].text = " "
 
     indexNotesObj++
     console.table(notesList)
+    }
+}
+
+function popUpErrorNotes() {
+    let popUpWindowNotes = document.getElementById('popUpWindowNote')
+    popUpWindowNotes.style.display = "flex"
+    setTimeout(() => {
+        popUpWindowNotes.style.opacity = "100%"
+    }, "1");
+
+    setTimeout(() => {
+        popUpWindowNotes.style.opacity = "0%"
+    }, "2000");
+
+    setTimeout(() => {
+        popUpWindowNotes.style.display = "none"
+    }, "3000");
+}
+
+function paddingList() {
+    if (listLength != 0) {
+        notesListUL.classList.add('notesListULActive')
+    } else {
+        notesListUL.classList.remove('notesListULActive')
+    }
 }
 

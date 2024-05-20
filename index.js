@@ -9,8 +9,8 @@ let notesHome = document.getElementById('notesHome');
 let taskHome = document.getElementById('taskHome');
 
 document.addEventListener("DOMContentLoaded", () => {
-    mainHome.style.display = "none";
-    notesHome.style.display = "flex";
+    mainHome.style.display = "flex";
+    notesHome.style.display = "none";
     taskHome.style.display = "none"
 })
 
@@ -223,6 +223,9 @@ function addNotesOnList() {
         notesList[indexNotesObj].title = notesInput.value
         notesList[indexNotesObj].text = " "
         indexNotesObj++
+
+        notesInput.value = ""
+        notesInput.focus()
 
         notesListLength++
         reloadNotesList()

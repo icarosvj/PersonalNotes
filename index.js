@@ -69,7 +69,7 @@ function reloadTaskList() {
                 <div class="taskEditTop">
                     <input class="taskEditTitle" value="${task.title}" spellcheck="false" id="taskTitle${taskList.indexOf(task)}" minlength="3" maxlength="18" required >
                     <button class="taskEditCloseBtn" value="${taskList.indexOf(task)}" onclick="closeTask(this.value)">
-                        <img src="/images/close.svg" alt="" srcset="">
+                        <img src="images/close.svg" alt="" srcset="">
                     </button>
             </div>
                 <textarea name="taskEditText" id="taskEditText${task.id}" class="taskEditText" cols="35" rows="10" spellcheck="false" placeholder="Insert your Text">${task.text}</textarea>
@@ -192,7 +192,7 @@ function reloadNotesList() {
             <div class="notesEditTop">
                 <input class="notesEditTitle" id="notesEditTitle${note.id}" spellcheck="false" minlength="3" maxlength="18" required id="notesEditTitle${note.id}" value="${note.title}" >
                 <button class="notesEditCloseBtn" onclick="closeNote(${note.id})">
-                    <img src="/images/close.svg" alt="" srcset="">
+                    <img src="images/close.svg" alt="" srcset="">
                 </button>
             </div>
             <textarea id="notesEditText${note.id}" name="notesEditText" class="notesEditText" cols="35" rows="10" spellcheck="false" placeholder="Insert your Text">${note.text}</textarea>

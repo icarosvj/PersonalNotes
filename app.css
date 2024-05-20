@@ -348,14 +348,16 @@ body {
     color: #6e6e6e46;
 }
 
-#taskDateToday, #notesHomeTitle {
+#taskDateToday,
+#notesHomeTitle {
     font-family: sf-bold;
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 1.3rem;
 }
 
-#popUpWindow, #popUpWindowNote {
+#popUpWindow,
+#popUpWindowNote {
     display: none;
     align-items: center;
     margin-bottom: 1.3rem;
@@ -372,7 +374,8 @@ body {
 
 }
 
-#popUpWindow p, #popUpWindowNote p {
+#popUpWindow p,
+#popUpWindowNote p {
     margin: 0px 10px;
     color: #a71d1d;
 
@@ -412,7 +415,7 @@ body {
     width: 100%;
     display: flex;
     height: 8vh;
-    margin-bottom: 1.5rem;
+
     justify-content: center;
 }
 
@@ -425,10 +428,9 @@ body {
     width: 30vw;
     background-color: #FAF9FD;
     box-shadow: 0px 0px 15px #0000000e;
-
-
     color: var(--blue);
 }
+
 
 #notesAddBtn {
     background-color: var(--blue);
@@ -452,6 +454,10 @@ body {
     flex-wrap: wrap;
 }
 
+#notesListUL.notesActive {
+    margin-top: 1.5rem;
+}
+
 .note {
     min-width: 13vw;
     min-height: 35vh;
@@ -463,8 +469,8 @@ body {
     border-radius: 15px;
 
     background-image: linear-gradient(to top, #eeecf32d, #faf9fd8c);
-    border: 3px solid #fff;
     box-shadow: 0px 0px 5px #0000001f;
+    cursor: pointer;
 }
 
 .noteTitle {
@@ -475,6 +481,9 @@ body {
 
 .noteText {
     font-family: sf-regular;
+    max-height: 150px;
+    max-width: 13vw;
+    word-break: break-word;
 }
 
 .notesEdit {
@@ -492,7 +501,7 @@ body {
     border-radius: 30px;
 
     left: 50%;
-    top: 51%;
+    top: 48%;
     transform: translate(-50%, -50%);
     margin-top: 1rem;
     z-index: 1;
@@ -535,4 +544,16 @@ body {
     position: absolute;
     left: 58vw;
     cursor: pointer;
+}
+
+.noteDeleteBtn {
+    background-color: #a71d1d1a;
+    color: #a71d1d;
+    cursor: pointer;
+    font-family: sf-bold;
+    font-size: 1rem;
+    border-radius: 5px;
+
+    padding: 10px;
+    width: 8vw;
 }

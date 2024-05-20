@@ -47,6 +47,8 @@ let listLength = taskList.length
 document.addEventListener('DOMContentLoaded', () => {
     setDayTask()
     reloadTaskList()
+
+    reloadNotesList()
 })
 
 function reloadTaskList() {
@@ -172,50 +174,59 @@ let notesInput = document.getElementById('notesInput')
 let notesAddBtn = document.getElementById('notesAddBtn')
 let notesListUL = document.getElementById('notesListUL')
 
+
 let notesList = []
+let notesListLength = 0
 let indexNotesObj = 0
 
 function reloadNotesList() {
-    let notesReloadList = notesList.map(function(note) {
+    let notesReloadList = notesList.map(function (note) {
+        let localText = note.text
+        let spliceText = localText.slice(0, 100);
         return `
-        <div class="note">
+        <div class="note" id="noteId${note.id}}" onclick="editNote(${note.id})">
         <p class="noteTitle">${note.title}</p>
-            <p class="noteText">${note.text}</p>
-
-            <div class="notesEdit" id="notesEdit${note.id}">
+            <p class="noteText">${spliceText}</p>
+        </div>
+        <div class="notesEdit" id="notesEdit${note.id}">
             <div class="notesEditTop">
-                <input class="notesEditTitle" spellcheck="false" minlength="3" maxlength="18" required id="notesEditTitle${note.id}" >
-                <button class="notesEditCloseBtn">
+                <input class="notesEditTitle" id="notesEditTitle${note.id}" spellcheck="false" minlength="3" maxlength="18" required id="notesEditTitle${note.id}" value="${note.title}" >
+                <button class="notesEditCloseBtn" onclick="closeNote(${note.id})">
                     <img src="/images/close.svg" alt="" srcset="">
                 </button>
             </div>
-            <textarea id="notesEditText${note.id}" name="notesEditText" class="notesEditText" cols="35" rows="10" spellcheck="false" placeholder="Insert your Text">Teste</textarea>
+            <textarea id="notesEditText${note.id}" name="notesEditText" class="notesEditText" cols="35" rows="10" spellcheck="false" placeholder="Insert your Text">${note.text}</textarea>
+            <button class="noteDeleteBtn" onclick="deleteNote(this.value)" value="${notesList.indexOf(note)}">Delete Note</button>
         </div>
-        </div>
+
 
 
         `
     })
     notesReloadList = notesReloadList.join("")
     notesListUL.innerHTML = notesReloadList
+    notesPaddingList()
 }
 
 notesAddBtn.addEventListener('click', () => {
     addNotesOnList()
-    reloadNotesList()
+
 })
 
 function addNotesOnList() {
+
     if (notesInput.value === "") {
         popUpErrorNotes()
     } else {
 
-    notesList.push({ id: indexNotesObj, })
-    notesList[indexNotesObj].title = notesInput.value
-    notesList[indexNotesObj].text = " "
+        notesList.push({ id: indexNotesObj, })
+        notesList[indexNotesObj].title = notesInput.value
+        notesList[indexNotesObj].text = " "
+        indexNotesObj++
 
-    indexNotesObj++
-    console.table(notesList)
+        notesListLength++
+        reloadNotesList()
+        notesPaddingList()
     }
 }
 
@@ -235,11 +246,42 @@ function popUpErrorNotes() {
     }, "3000");
 }
 
-function paddingList() {
-    if (listLength != 0) {
-        notesListUL.classList.add('notesListULActive')
-    } else {
-        notesListUL.classList.remove('notesListULActive')
+function notesPaddingList() {
+    if (notesListLength > 0) {
+        notesListUL.classList.add('notesActive')
+    } else (
+        notesListUL.classList.remove('notesActive')
+    )
+}
+
+notesInput.addEventListener('keydown', function (event) {
+    if (event.key === "Enter") {
+        addNotesOnList()
     }
+})
+
+function deleteNote(value) {
+    delete notesList[value]
+    notesListLength--
+    reloadNotesList()
+}
+
+function editNote(note) {
+    let editNote = document.querySelector(`div#notesEdit${note}`)
+    editNote.style.display = "flex"
+}
+
+function closeNote(note) {
+    let editNote = document.querySelector(`div#notesEdit${note}`)
+    editNote.style.display = "none"
+
+    //get text 
+    let currentNoteTitle = document.getElementById(`notesEditTitle${note}`).value
+    notesList[note].title = currentNoteTitle
+
+    let currentNoteText = document.getElementById(`notesEditText${note}`).value
+    notesList[note].text = currentNoteText
+
+    reloadNotesList()
 }
 
